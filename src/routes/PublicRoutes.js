@@ -1,14 +1,11 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import PostComponent from '../Components/component1/PostComponent'
+import PriceListComponent from '../Components/PriceListComponent/PriceListComponent'
 
 const PublicRoutes = () => (
   <Switch>
-    <Route exact path={['/', '/login', '/forgot-password', '/register']}>
-      <PostComponent/>
-    </Route>
-    <Route exact path="/app">
-    <> </>
+    <Route exact path='/'>
+      <PriceListComponent/>
     </Route>
   </Switch>
 )
