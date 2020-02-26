@@ -1,12 +1,19 @@
 import axios from "axios";
 const api = {
-  devApi : "http://localhost:3000/apiResponse.json",
-  prodApi : "https://pramod-narasimha.github.io/apiResponse.json"
+  devApi: "http://localhost:3000/apiResponse.json",
+  prodApi: "https://pramod-narasimha.github.io/apiResponse.json"
 };
 
 export function setApiData(data) {
   return {
     type: "SET_API_DATA",
+    payload: data
+  };
+}
+
+export function setPostApiData(data) {
+  return {
+    type: "SET_POST_API_DATA",
     payload: data
   };
 }
@@ -18,12 +25,11 @@ export function setLoading(data) {
   };
 }
 
-export function setSideDrawer(data){
+export function setSideDrawer(data) {
   return {
     type: "SET_DRAWER",
     payload: data
-  }
-
+  };
 }
 export const fetchApiData = () => dispatch => {
   dispatch(setLoading(true));
@@ -33,10 +39,18 @@ export const fetchApiData = () => dispatch => {
   });
 };
 
+export const postApiData = data => dispatch => {
+  dispatch(setLoading(true));
+  axios.post("https://jsonplaceholder.typicode.com/posts", data).then(response => {
+    dispatch(setPostApiData(response.data));
+    dispatch(setLoading(false));
+  });
+};
+
 export const openSideDrawer = () => dispatch => {
   dispatch(setSideDrawer("open"));
-}
+};
 
 export const closeSideDrawer = () => dispatch => {
   dispatch(setSideDrawer("close"));
-}
+};
