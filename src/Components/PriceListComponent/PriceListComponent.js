@@ -1,6 +1,5 @@
 import React from "react";
-import { Descriptions, Badge, Table, Input, Row, Col, Button } from "antd";
-import Title from "antd/lib/typography/Title";
+import {  Col } from "antd";
 import { InputStyles, RowStyles, HeaderTitleStyle, Container, HeaderRowStyles, ButtonStyles } from "./styles";
 
 const INITIAL_DATA = {
